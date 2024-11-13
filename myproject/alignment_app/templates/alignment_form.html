@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire d'Alignement</title>
+    <link rel="stylesheet" href="/static/style/style.css">
+</head>
+<body>
+    <h1>Formulaire d'Alignement et de Significance</h1>
+
+    <form id="alignment-form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class = "data-container">
+            <h2>Données à analyser :</h2>
+                <div class="form-group">
+                    <label for="sequence_text">Séquences au format Fasta :</label>
+                    {{ form.sequence_text }}
+                </div>
+                <div class="form-group">
+                    <label for="sequence_file">Fichier de séquences :</label>
+                    {{ form.sequence_file }}
+                </div>
+        </div>
+
+        <div class="alignment-container">
+            <div class="alignement-options">
+                <h2>
+                    <label for="align">Alignement :</label>
+                    <input type="checkbox" id="align" name="align" {% if form.align.value %}checked{% endif %}>
+                </h2>
+            </div>
+
+            <div id="align-params" style="display: none;">
+                <div class="form-group">
+                    <label for="indel">Coût d'une insertion/deletion :</label>
+                    <input type="number" id="indel" name="indel" value="{{ form.indel.value }}">
+                </div>
+                <div class="form-group">
+                    <label for="substitution">Coût d'une substitution :</label>
+                    <input type="number" id="substitution" name="substitution" value="{{ form.substitution.value }}">
+                </div>
+                <div class="form-group">
+                    <label for="identity">Coût d'une identité :</label>
+                    <input type="number" id="identity" name="identity" value="{{ form.identity.value }}">
+                </div>
+                <div class="form-group">
+                    <label for="length">Longueur d'alignement :</label>
+                    <input type="number" id="length" name="length" value="{{ form.length.value }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="significance-container">
+            <div class="significance-options">
+                <h2>
+                    <label for="significance">Activer Significance :</label>
+                    <input type="checkbox" id="significance" name="significance" {% if form.significance.value %}checked{% endif %}>
+                </h2>
+            </div>
+
+            <div id="significance-params" style="display: none;">
+                <div class="form-group">
+                    <label for="minimal_score">Score minimal :</label>
+                    <input type="number" id="minimal_score" name="minimal_score" value="{{ form.minimal_score.value }}">
+                </div>
+                <div class="form-group">
+                    <label for="random_size">Nombre de séquences aléatoires :</label>
+                    <input type="number" id="random_size" name="random_size" value="{{ form.random_size.value }}">
+                </div>
+            </div>
+        </div>
+
+         {% if form.non_field_errors %}
+            <div class="error-summary">
+                {% for error in form.non_field_errors %}
+                    <p class="error">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="loader-container">
+            <input type="submit" value="Lancer l'analyse">
+            <div id="loader" style="display: none;"></div>
+        </div>
+    </form>
+
+
+    <script src="../static/form.js"></script>
+
+    <div class="data">
+        <h2>Informations :</h2>
+        <h3>Concernant le projet</h3>
+            <p>
+
+            </p>
+
+            <embed src="../static/pdfs/Alignements.pdf" type="application/pdf">
+             <a href="../static/pdfs/Alignements.pdf" class="download-button" download>Télécharger l'énoncer</a>
+        <h3>Concernant l'alignement</h3>
+        <h3>Concernant la Significance</h3>
+    </div>
+</body>
+</html>

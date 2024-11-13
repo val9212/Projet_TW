@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Programme d'Alignement et de Significance de Séquences</title>
+</head>
+<body>
+
+<h1>Programme d'Alignement et de Significance de Séquences</h1>
+
+<p>Ce programme permet de calculer l'alignement et la significance entre deux séquences ADN fournies dans un fichier au format FASTA. L'alignement est calculé en utilisant une matrice de scores spécifiée par l'utilisateur, et la significance est évaluée par rapport à un ensemble de séquences générées aléatoirement.</p>
+
+<P>Il regroupe les parties 1 et 2 de l'énoncé.</P>
+
+<h2>Dépendances</h2>
+
+<p>Le programme nécessite les modules Python suivants :</p>
+
+<ul>
+    <li><code>Alignement</code></li>
+    <li><code>Significance</code></li>
+    <li><code>inout</code></li>
+    <li><code>Cost</code></li>
+    <li><code>sequence</code></li>
+</ul>
+
+<h2>Utilisation</h2>
+
+<p>Le programme est exécuté via la ligne de commande. Voici les options disponibles :</p>
+
+<ul>
+    <li><code>-s</code> ou <code>--fasta</code> : Spécifie le chemin vers le fichier FASTA contenant les deux séquences à aligner.</li>
+    <li><code>-c</code> ou <code>--score</code> : Spécifie le chemin vers le fichier de configuration des scores.</li>
+    <li><code>-l</code> ou <code>--length</code> : Longueur d'affichage de l'alignement et du nombre de '=' pour la significance (par défaut : 50).</li>
+    <li><code>-a</code> ou <code>--alignement</code> : Activer ou désactiver le calcul de l'alignement (par défaut : True).</li>
+    <li><code>-p</code> ou <code>--significance</code> : Activer ou désactiver le calcul de la significance (par défaut : True).</li>
+    <li><code>-r</code> ou <code>--random</code> : Nombre de séquences aléatoires créées pour le calcul de la significance (par défaut : 100).</li>
+    <li><code>-m</code> ou <code>--minimal</code> : Score minimal pour l'affichage de la significance (par défaut : 0).</li>
+</ul>
+
+<h3>Exemple d'Exécution</h3>
+
+<pre><code>python main.py -s .\Datas-20240122\sequences.fasta -c .\Datas-20240122\score.txt </code></pre>
+
+<pre><code>python main.py -s .\Datas-20240122\sequences_2.fasta -c .\Datas-20240122\score.txt -l 60 -r 150 -m 65 </code></pre>
+
+<h2>Fonctionnalités</h2>
+
+<ul>
+    <li><strong>Alignement</strong> : Calcule l'alignement optimal entre deux séquences en utilisant l'algorithme de programmation dynamique.</li>
+    <li><strong>Significance</strong> : Évalue la significance de l'alignement en générant des séquences aléatoires et en comparant les scores.</li>
+</ul>
+
+<h2>Fichiers de Configuration</h2>
+
+<p>Le fichier de score doit être formaté comme suit :</p>
+
+<pre>
+identity : &lt;score&gt;
+substitution : &lt;score&gt;
+indel : &lt;score&gt;
+</pre>
+
+<p>Le fichier FASTA doit contenir exactement deux séquences à aligner.</p>
+
+<h2>Informations supplémentaires dépendances</h2>
+<ul>
+    <li><code>Alignement</code>: est une classe contenant 4 méthodes :
+        <ul>
+            <li><code>DPmatrix(cls, seq_1, seq_2, cost)</code>: Calcule la matrice d'alignement entre deux séquences avec les scores de l'objet cost.</li>
+            <li><code>SimilarityScore(cls, matrix)</code>: Retourne le plus gros score et sa position dans la matrice d'alignement.</li>
+            <li><code>Align(cls, seq1, seq2, cost, length)</code>: Affiche l'alignement des deux séquences selon les scores de l'objet cost.</li>
+            <li><code>__print_formatted_alignment(cls, seq1, seq2, aligned_seq1, aligned_seq2, match_aligned, start_index_seq1, start_index_seq2, line_length)</code>: Imprime l'alignement formaté avec des retours à la ligne tous les 'line_length' caractères.</li>
+        </ul>
+    </li>
+
+    <li><code>Significance</code>: est une classe contenant 5 méthodes:
+        <ul>
+            <li><code>count_acgt(cls, seq)</code>: Compte le nombre de nucléotides A, C, G, T dans une séquence donnée.</li>
+            <li><code>significance(cls, seq_1, seq_2, s, n, cost)</code>: Évalue la significance de l'alignement en générant des séquences aléatoires.</li>
+            <li><code>modes(cls, score_liste)</code>: Trouve et note la position des modes dans la liste des scores.</li>
+            <li><code>DisplayDist(cls, seq_1, seq_2, s, n, cost, eqs_size)</code>: Affiche la distribution des scores pour des séquences aléatoires par rapport à une séquence de référence.</li>
+            <li><code>DPmatrix_v2(cls, seq1, seq2, cost)</code>: Calcule le score d'alignement maximal entre deux séquences d'ADN.</li>
+        </ul>
+    </li>
+
+        <li><code>InOut</code>: est une classe contenant 2 méthodes:
+        <ul>
+            <li><code>parsefasta(cls, file)</code>: Lit un fichier au format FASTA et récupère les noms et les séquences.</li>
+            <li><code>parseconfig(cls, file)</code>: Récupère les données de score à partir d'un fichier de configuration.</li>
+        </ul>
+    </li>
+
+        <li><code>Cost</code>: est une classe contenant 6 méthodes:
+        <ul>
+            <li><code>__init__(self, score, allowed_letters)</code>: Constructeur qui initialise les scores pour les indels, les substitutions et les identités, ainsi que l'ensemble des lettres autorisées.</li>
+            <li><code>get_indel(self)</code>: Retourne le score pour un indel (insertion ou délétion).</li>
+            <li><code>get_substitution(self)</code>: Retourne le score pour une substitution (remplacement d'une lettre par une autre).</li>
+            <li><code>get_identity(self)</code>: Retourne le score pour une identité (quand deux lettres sont identiques).</li>
+            <li><code>__compare(self, letter1, letter2)</code>: Méthode privée qui compare deux lettres et retourne le score approprié, soit pour une identité soit pour une substitution.</li>
+            <li><code>__call__(self, letter1, letter2)</code>: Fonction callable qui permet à l'instance de se comporter comme une fonction, appellant la méthode de comparaison ou renvoyant le score d'indel en fonction des lettres passées en argument.</li>
+        </ul>
+    </li>
+        <li><code>sequence</code>: est une classe contenant 4 méthodes:
+        <ul>
+            <li><code>__init__(self, id, sequence)</code>: Constructeur qui initialise l'objet Sequence avec un identifiant et une séquence de nucléotides.</li>
+            <li><code>id(self)</code>: Retourne l'identifiant de la séquence sans le caractère '>'.</li>
+            <li><code>__len__(self)</code>: Permet d'utiliser la fonction <code>len()</code> sur une instance de Sequence pour obtenir la longueur de la séquence de nucléotides.</li>
+            <li><code>getSequence(self)</code>: Retourne la séquence de nucléotides.</li>
+        </ul>
+        </li>
+</ul>
+</body>
+</html>

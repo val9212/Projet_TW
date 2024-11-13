@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Alignment and Significance Results</title>
+    <link rel="stylesheet" href="/static/style/style.css">
+</head>
+<body>
+    <h1>Resultats</h1>
+
+    <!-- Résultats d'alignement -->
+    <div class="alignment-container" style="display: {{ show.alignment }}">
+        <h2>Alignment Results</h2>
+        <p><strong>Sequence 1 ID:</strong> {{ align_result.seq1_id }}</p>
+        <div class="sequence_container">
+        <p class="sequence">{{ align_result.seq1_original }}</p>
+        </div>
+
+        <p><strong>Sequence 2 ID:</strong> {{ align_result.seq2_id }}</p>
+        <div class="sequence_container">
+        <p class="sequence">{{ align_result.seq2_original }}</p>
+        </div>
+
+        <h2>Alignment:</h2>
+        {% for line in align_result.alignment %}
+            {% if '|' in line %}
+                <span class="match-line">{{ line }}</span><br>
+            {% else %}
+                <span>{{ line }}</span><br>
+            {% endif %}
+        {% endfor %}
+
+        <p><strong>Score de l'alignement:</strong> {{ align_result.score }}</p>
+
+    </div>
+
+    <!-- Résultats de significance -->
+    <div class="significance-container" style="display: {{ show.significance }}">
+        <h2>Significance Results</h2>
+        <p><strong>Score:</strong> {{ significance_result.score }}</p>
+        <p><strong>Pourcentage score:</strong> {{ significance_result.pourcentage }}%</p>
+        <p><strong>Significance Values:</strong></p>
+        <img src="{{ significance_result.filename }}" alt="Graphique de distribution des scores">
+    </div>
+</body>
+</html>
