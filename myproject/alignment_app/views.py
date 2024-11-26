@@ -31,7 +31,6 @@ def alignment_view(request):
             align = form.cleaned_data['align']
             significance = form.cleaned_data['significance']
             length = form.cleaned_data['length']
-            minimal = form.cleaned_data['minimal_score']
             random_size = form.cleaned_data['random_size']
 
             # Charger les séquences à partir du contenu du fichier FASTA
@@ -57,7 +56,7 @@ def alignment_view(request):
                     'score': align_result['score'],
                 }
 
-                significance_result = Significance.DisplayDist(data[0], data[1], minimal, random_size, cost, length)
+                significance_result = Significance.DisplayDist(data[0], data[1], 0, random_size, cost, length)
 
                 context_significance = {
                     'filename': significance_result['filename'],
@@ -92,7 +91,7 @@ def alignment_view(request):
 
             # Calculer la significance
             if significance:
-                significance_result = Significance.DisplayDist(data[0], data[1], minimal, random_size, cost, length)
+                significance_result = Significance.DisplayDist(data[0], data[1], 0, random_size, cost, length)
 
                 context_significance = {
                     'filename': significance_result['filename'],

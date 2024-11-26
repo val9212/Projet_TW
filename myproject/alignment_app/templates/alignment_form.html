@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulaire d'Alignement</title>
+    <link rel="icon" type="image/vnd.icon" href="/static/icon/favicon.png">
     <link rel="stylesheet" href="/static/style/style.css">
 </head>
 <body>
@@ -60,10 +61,6 @@
 
             <div id="significance-params" style="display: none;">
                 <div class="form-group">
-                    <label for="minimal_score">Score minimal :</label>
-                    <input type="number" id="minimal_score" name="minimal_score" value="{{ form.minimal_score.value }}">
-                </div>
-                <div class="form-group">
                     <label for="random_size">Nombre de séquences aléatoires :</label>
                     <input type="number" id="random_size" name="random_size" value="{{ form.random_size.value }}">
                 </div>
@@ -91,8 +88,9 @@
         <h2>Informations :</h2>
         <h3>Concernant le projet</h3>
             <p>
-
+                Ce programme permet de calculer l'alignement et la significance entre deux séquences ADN fournies dans un fichier au format FASTA. L'alignement est calculé en utilisant une matrice de scores spécifiée par l'utilisateur, et la significance est évaluée par rapport à un ensemble de séquences générées aléatoirement.
             </p>
+        <p>Il regroupe les <strong>parties 1 et 2</strong> de l'énoncé.</p>
 
             <embed src="../static/pdfs/Alignements.pdf" type="application/pdf">
              <a href="../static/pdfs/Alignements.pdf" class="download-button" download>Télécharger l'énoncer</a>

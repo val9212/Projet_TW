@@ -15,7 +15,6 @@ class AlignmentForm(forms.Form):
 
     significance = forms.BooleanField(required=False, initial=False, label="Activer Significance")
     length = forms.IntegerField(required=False, initial=50, label="Longueur d'alignement")
-    minimal_score = forms.IntegerField(required=False, initial=0, label="Score minimal")
     random_size = forms.IntegerField(required=False, initial=100, label="Nombre de séquences aléatoires")
 
     def clean(self):

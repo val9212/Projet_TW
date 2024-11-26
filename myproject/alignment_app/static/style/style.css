@@ -47,6 +47,11 @@ p {
     color: #2c2f33;
 }
 
+div.data p {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 /* Séquences */
 .sequence {
     word-wrap: break-word;
