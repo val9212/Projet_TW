@@ -95,6 +95,154 @@
             <embed src="../static/pdfs/Alignements.pdf" type="application/pdf">
              <a href="../static/pdfs/Alignements.pdf" class="download-button" download>Télécharger l'énoncer</a>
         <h3>Concernant l'alignement</h3>
+            <p>
+                Le programme réalise un alignement local pour identifier la région la plus similaire entre deux séquences d'ADN.
+                Cette méthode utilise une matrice de scores pour évaluer les correspondances, les insertions/délétions et les suppressions entre les caractères des deux séquences.
+            </p>
+            <p>
+                Cette matrice est un exemple de calcul des scores d'alignement pour deux séquences. Chaque cellule représente un score basé sur les correspondances ou les pénalités, en suivant les valeurs définies. Les en-têtes des lignes et des colonnes correspondent aux caractères des séquences comparées.
+            </p>
+            
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>.</th>  
+                  <th>A</th>
+                  <th>T</th>
+                  <th>C</th>
+                  <th>G</th>
+                  <th>A</th>
+                  <th>C</th>
+                  <th>C</th>
+                  <th>T</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>.</th>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th>A</th>
+                  <td>0</td>
+                  <td class="aligne">2</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th>T</th>
+                  <td>0</td>
+                  <td>0</td>
+                  <td class="aligne">4</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th>T</th>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>2</td>
+                  <td class="aligne">3</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <th>G</th>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td class="aligne" id="max-score">5</td>
+                  <td>3</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <th>G</th>
+                  <td>0</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th>T</th>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>1</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <th>T</th>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <th>C</th>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+                Pour réaliser l'alignement, on part du meilleur score, puis on remonte la matrice.
+            </p>    
+                <p><strong>Meilleur score</strong> : 5<p>
+                <p><strong>Alignement</strong> :</p>
+                <span> seq 1	1	ATCG	4</span><br>
+            
+        
+            
+                <span class="match-line">		    	|| |</span><br>
+            
+        
+            
+                <span> seq 2	1	ATTG	4</span><br>
         <h3>Concernant la Significance</h3>
     </div>
 </body>

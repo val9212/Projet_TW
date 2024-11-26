@@ -35,8 +35,8 @@ def alignment_view(request):
 
             # Charger les séquences à partir du contenu du fichier FASTA
             if sequence_file:
-                file_content = sequence_file.read().decode('utf-8')
-                data = InOut.parse_fasta(file_content)  # Traitez le contenu du fichier
+                sequence_file = sequence_file.read().decode('utf-8')
+                data = InOut.parse_fasta(sequence_file)  # Traitez le contenu du fichier
             elif sequence_text:
                 data = InOut.parse_fasta(sequence_text)
 
@@ -104,10 +104,6 @@ def alignment_view(request):
                     'significance': "block",
                 }
                 return render(request, 'result.html', {'significance_result': context_significance, 'show': context_show})
-
-            if not align and not significance:
-                return render(request, 'formulaire_W.html')
-
 
     else:
         form = AlignmentForm()
