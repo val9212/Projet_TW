@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <title>Formulaire d'Alignement</title>
     <link rel="icon" type="image/vnd.icon" href="/static/icon/favicon.png">
-    <link rel="stylesheet" href="/static/style/style.css">
+    <link id="theme-style" rel="stylesheet" href="/static/style/style.css">
 </head>
 <body>
-    <h1>Formulaire d'Alignement et de Significance</h1>
+
+    <nav>
+        <a href="#alignment-form">Formulaire</a>
+        <a href="#alignement-options">Options d'Alignement</a>
+        <a href="#significance-options">Options de Significance</a>
+        <a href="#infos-projet">Informations</a>
+        <label class="switch">
+        <input type="checkbox" id="toggle-style">
+        <span class="slider"></span>
+        </label>
+    </nav>
+
+    <header>
+        <h1>Formulaire d'Alignement et de Significance</h1>
+    </header>
 
     <form id="alignment-form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class = "data-container">
+        <div class = "data-container" id="data-container">
             <h2>Données à analyser :</h2>
                 <div class="form-group">
                     <label for="sequence_text">Séquences au format Fasta :</label>
@@ -24,7 +38,7 @@
         </div>
 
         <div class="alignment-container">
-            <div class="alignement-options">
+            <div class="alignement-options" id="alignement-options">
                 <h2>
                     <label for="align">Alignement :</label>
                     <input type="checkbox" id="align" name="align" {% if form.align.value %}checked{% endif %}>
@@ -52,7 +66,7 @@
         </div>
 
         <div class="significance-container">
-            <div class="significance-options">
+            <div class="significance-options" id="significance-options">
                 <h2>
                     <label for="significance">Activer Significance :</label>
                     <input type="checkbox" id="significance" name="significance" {% if form.significance.value %}checked{% endif %}>
@@ -80,11 +94,8 @@
             <div id="loader" style="display: none;"></div>
         </div>
     </form>
-
-
-    <script src="../static/form.js"></script>
-
-    <div class="data">
+    
+    <div class="data" id="infos-projet">
         <h2>Informations :</h2>
         <h3>Concernant le projet</h3>
             <p>
@@ -246,4 +257,7 @@
         <h3>Concernant la Significance</h3>
     </div>
 </body>
+<script src="../static/switch.js"></script>
+<script src="../static/form.js"></script>
+
 </html>

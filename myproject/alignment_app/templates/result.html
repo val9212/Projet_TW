@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <title>Alignment and Significance Results</title>
     <link rel="icon" type="image/vnd.icon" href="/static/icon/favicon.png">
-    <link rel="stylesheet" href="/static/style/style.css">
+    <link id="theme-style" rel="stylesheet" href="/static/style/style_sombre.css">
 </head>
 <body>
-    <h1>Resultats</h1>
+    
+    <nav>
+        <a id="retour" href="{% url 'alignment_view' %}">Retour au formulaire</a>
+        <a href="#alignement-result">Résultats d'Alignement</a>
+        <a href="#significance-result">Résultats de Significance</a>
+        <label class="switch">
+        <input type="checkbox" id="toggle-style">
+        <span class="slider"></span>
+        </label>
+    </nav>
+    
+    <header>
+        <h1>Formulaire d'Alignement et de Significance</h1>
+    </header>
 
     <!-- Résultats d'alignement -->
-    <div class="alignment-container" style="display: {{ show.alignment }}">
+    <div id="alignement-result" class="alignment-container" style="display: {{ show.alignment }}">
         <h2>Alignment Results</h2>
         <p><strong>Sequence 1 ID:</strong> {{ align_result.seq1_id }}</p>
         <div class="sequence_container">
@@ -36,7 +49,7 @@
     </div>
 
     <!-- Résultats de significance -->
-    <div class="significance-container" style="display: {{ show.significance }}">
+    <div id="significance-result" class="significance-container" style="display: {{ show.significance }}">
         <h2>Significance Results</h2>
         <p><strong>Score:</strong> {{ significance_result.score }}</p>
         <p><strong>Pourcentage score:</strong> {{ significance_result.pourcentage }}%</p>
@@ -44,4 +57,5 @@
         <img src="{{ significance_result.filename }}" alt="Graphique de distribution des scores">
     </div>
 </body>
+<script src="../static/switch.js"></script>
 </html>
