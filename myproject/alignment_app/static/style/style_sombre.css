@@ -8,22 +8,33 @@ body {
     padding-top: 60px;
 }
 
-/* Nav */
+/* Navbar */
 nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #23272a;
     border: 1px solid #000000;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     padding: 10px 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+}
+
+nav .center-section {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav .right-section {
+    display: flex;
+    align-items: center;
 }
 
 nav a {
@@ -155,7 +166,8 @@ th {
 
 table td.aligne {
     font-weight: bold;
-    background-color: #43b581;
+    background-color: #FFD700;
+    color: black;
 }
 
 #max-score {

@@ -9,13 +9,18 @@
 <body>
     
     <nav>
-        <a id="retour" href="{% url 'alignment_view' %}">Retour au formulaire</a>
-        <a href="#alignement-result">Résultats d'Alignement</a>
-        <a href="#significance-result">Résultats de Significance</a>
-        <label class="switch">
-        <input type="checkbox" id="toggle-style">
-        <span class="slider"></span>
-        </label>
+        <div class="center-section">
+            <a id="retour" href="{% url 'alignment_view' %}">Retour au formulaire</a>
+            <a href="#alignement-result">Résultats d'Alignement</a>
+            <a href="#significance-result">Résultats de Significance</a>
+        </div>
+        
+        <div class="right-section">
+            <label class="switch">
+            <input type="checkbox" id="toggle-style">
+            <span class="slider"></span>
+            </label>
+        </div>
     </nav>
     
     <header>

@@ -9,14 +9,20 @@
 <body>
 
     <nav>
-        <a href="#alignment-form">Formulaire</a>
-        <a href="#alignement-options">Options d'Alignement</a>
-        <a href="#significance-options">Options de Significance</a>
-        <a href="#infos-projet">Informations</a>
-        <label class="switch">
-        <input type="checkbox" id="toggle-style">
-        <span class="slider"></span>
-        </label>
+        <div class="center-section">
+            <a href="#alignment-form">Formulaire</a>
+            <a href="#alignement-options">Options d'Alignement</a>
+            <a href="#significance-options">Options de Significance</a>
+            <a href="#infos-projet">Informations</a>
+        </div>
+        
+        <div class="right-section">
+            Théme :
+            <label class="switch">
+            <input type="checkbox" id="toggle-style">
+            <span class="slider"></span>
+            </label>
+        </div>    
     </nav>
 
     <header>
@@ -68,7 +74,7 @@
         <div class="significance-container">
             <div class="significance-options" id="significance-options">
                 <h2>
-                    <label for="significance">Activer Significance :</label>
+                    <label for="significance">Significance :</label>
                     <input type="checkbox" id="significance" name="significance" {% if form.significance.value %}checked{% endif %}>
                 </h2>
             </div>

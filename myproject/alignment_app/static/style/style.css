@@ -10,20 +10,31 @@ body {
 
 /* Nav */
 nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #ffffff;
     border: 1px solid #dadce0;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
     padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+nav .center-section {
+    flex-grow: 1;
     display: flex;
     justify-content: center;
     gap: 20px;
-    position: fixed;
-    top : 0;
-    left: 0;
-    right : 0;
+}
+
+nav .right-section {
+    display: flex;
+    align-items: center;
 }
 
 nav a {
@@ -153,12 +164,12 @@ th {
 
 table td.aligne {
     font-weight: bold;
-    background-color: gold;
+    background-color: #FFD700;
 }
 
 #max-score {
     font-weight: bold;
-    color: red;
+    color: #ff5555;
 }
 
 div.data span{
