@@ -49,6 +49,16 @@ nav a:hover {
     color: #23272a;
 }
 
+#retour {
+    background-color: #7289da;
+    color: #ffffff;
+}
+
+#retour:hover {
+    background-color: #677bc4;
+    color: #ffffff;
+}
+
 /* Style titres */
 h1 {
     color: #23272a;
@@ -296,7 +306,7 @@ button:hover, input[type="submit"]:hover, .download-button:hover {
     width: 20px;
     border-radius: 50%;
     left: 4px;
-    bottom: 0px;
+    bottom: 0;
     top: 2px;
     background-color: #ffffff;
     transition: 0.4s;

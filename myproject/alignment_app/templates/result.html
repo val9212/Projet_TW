@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Alignment and Significance Results</title>
+    <title>Résultats Alignement et Significativité</title>
     <link rel="icon" type="image/vnd.icon" href="/static/icon/favicon.png">
     <link id="theme-style" rel="stylesheet" href="/static/style/style_sombre.css">
 </head>
@@ -25,12 +25,12 @@
     </nav>
     
     <header>
-        <h1>Formulaire d'Alignement et de Significance</h1>
+        <h1>Résultats Formulaire d'Alignement et de Significance</h1>
     </header>
 
     <!-- Résultats d'alignement -->
     <div id="alignement-result" class="alignment-container" style="display: {{ show.alignment }}">
-        <h2>Alignment Results</h2>
+        <h2>Résultats Alignement</h2>
         <p><strong>Sequence 1 ID:</strong> {{ align_result.seq1_id }}</p>
         <div class="sequence_container">
         <p class="sequence">{{ align_result.seq1_original }}</p>
@@ -56,10 +56,10 @@
 
     <!-- Résultats de significance -->
     <div id="significance-result" class="significance-container" style="display: {{ show.significance }}">
-        <h2>Significance Results</h2>
+        <h2>Résultats Significativité</h2>
         <p><strong>Score:</strong> {{ significance_result.score }}</p>
         <p><strong>Pourcentage score:</strong> {{ significance_result.pourcentage }}%</p>
-        <p><strong>Valeurs significatives:</strong></p>
+        <p><strong>Valeurs non significatives:</strong></p>
         <img src="{{ significance_result.filename }}" alt="Graphique de distribution des scores">
     </div>
 </body>
