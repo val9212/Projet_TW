@@ -25,11 +25,9 @@ nav {
     right: 0;
 }
 
-nav .center-section {
+nav .left-section {
     flex-grow: 1;
     display: flex;
-    justify-content: center;
-    gap: 20px;
 }
 
 nav .right-section {
@@ -155,6 +153,7 @@ table {
     border-collapse: collapse;
     color: #f2f3f5;
 }
+
 th, td {
     padding: 15px;
     text-align: center;
@@ -170,7 +169,7 @@ table td.aligne {
     color: black;
 }
 
-#max-score {
+#max-score, #freq-max-score{
     font-weight: bold;
     color: #ff5555;
 }
@@ -180,13 +179,17 @@ div.data span {
 }
 
 /* Images */
-.significance-container img {
+.significance-container img, .data img {
     max-width: 100%;
     height: auto;
     margin: 5px auto;
     border: 1px solid #000000;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.data img{
+    display: block;
 }
 
 /* Boutons */
@@ -217,8 +220,8 @@ button:hover, input[type="submit"]:hover, .download-button:hover {
     display: inline-block;
     width: 30px;
     height: 30px;
-    border: 5px solid #2c2f33;
-    border-top: 5px solid #000000;
+    border: 5px solid #e3e5e8;
+    border-top: 5px solid #7289da;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
@@ -265,7 +268,6 @@ button:hover, input[type="submit"]:hover, .download-button:hover {
     transition: background-color 0.2s;
 }
 
-
 /* Switch */
 .switch {
     position: relative;
@@ -281,7 +283,6 @@ button:hover, input[type="submit"]:hover, .download-button:hover {
     height: 0;
 }
 
-
 .slider {
     position: absolute;
     cursor: pointer;
@@ -295,7 +296,6 @@ button:hover, input[type="submit"]:hover, .download-button:hover {
     border: 5px solid #ffffff;
 }
 
-
 .slider:before {
     position: absolute;
     content: "";
@@ -303,16 +303,14 @@ button:hover, input[type="submit"]:hover, .download-button:hover {
     width: 20px;
     border-radius: 50%;
     left: 0;
-    bottom: 0px;
+    bottom: 0;
     top: 2px;
     background-color: #000000;
     transition: 0.4s;
 }
 
-
 input:checked + .slider {
     background-color: #ccd0d5;
-
 }
 
 input:checked + .slider:before {

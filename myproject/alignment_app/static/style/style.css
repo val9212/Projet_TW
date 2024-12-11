@@ -25,11 +25,9 @@ nav {
     right: 0;
 }
 
-nav .center-section {
+nav .left-section {
     flex-grow: 1;
     display: flex;
-    justify-content: center;
-    gap: 20px;
 }
 
 nav .right-section {
@@ -153,6 +151,7 @@ table {
     margin: 0 auto;
     border-collapse: collapse;
 }
+
 th, td {
     padding: 15px;
     text-align: center;
@@ -167,7 +166,7 @@ table td.aligne {
     background-color: #FFD700;
 }
 
-#max-score {
+#max-score, #freq-max-score {
     font-weight: bold;
     color: #ff5555;
 }
@@ -176,13 +175,17 @@ div.data span{
     padding-left: 15px;
 }
 
-.significance-container img {
+.significance-container img, .data img {
     max-width: 100%;
     height: auto;
     margin: 5px auto;
     border: 1px solid #dadce0;
     border-radius: 8px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.data img{
+    display: block;
 }
 
 button, input[type="submit"] {
@@ -267,13 +270,11 @@ button:hover, input[type="submit"]:hover, .download-button:hover {
     margin-left: 20px;
 }
 
-
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
-
 
 .slider {
     position: absolute;
@@ -288,7 +289,6 @@ button:hover, input[type="submit"]:hover, .download-button:hover {
     border: 5px solid #23272a;
 }
 
-
 .slider:before {
     position: absolute;
     content: "";
@@ -302,11 +302,9 @@ button:hover, input[type="submit"]:hover, .download-button:hover {
     transition: 0.4s;
 }
 
-
 input:checked + .slider {
     background-color: #7289da;
 }
-
 
 input:checked + .slider:before {
     transform: translateX(26px);
