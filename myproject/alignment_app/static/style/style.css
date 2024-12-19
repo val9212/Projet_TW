@@ -4,8 +4,12 @@ body {
     background-color: #f2f3f5;
     color: #2c2f33;
     margin: 0;
-    padding: 20px;
-    padding-top: 60px;
+    padding: 60px 20px 20px;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 60px;
 }
 
 /* Nav */
@@ -42,6 +46,12 @@ nav a {
     padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-logo {
+    height: 30px;
+    width: auto;
+    vertical-align: middle;
 }
 
 nav a:hover {

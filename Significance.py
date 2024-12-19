@@ -1,3 +1,4 @@
+import threading
 import matplotlib
 matplotlib.use('Agg')
 
@@ -128,17 +129,19 @@ class Significance:
            # eqs = "=" * (freq * eqs_size // max_frequency)
             #print(f"{marker}\t{score}\t{freq}:{eqs}")
 
-        plots_dir = 'media'  # Répertoire où les plots seront enregistrés
-        if not os.path.exists(plots_dir):  # Vérifie si le dossier existe
+        plots_dir = 'media'
+        if not os.path.exists(plots_dir):
             os.makedirs(plots_dir)
 
         filename = f'media/distribution_{int(time.time())}.svg'
         cls.plot_distribution(seq_1, seq_2, s, n, cost, eqs_size, filename)
-        print(filename)
+
+        threading.Thread(target=cls.delete_file_after_delay, args=(filename, 600)).start()
+
         return {
             'score': original_score,
-            "pourcentage": original_score_percentage,
-            "filename": filename,
+            'pourcentage': original_score_percentage,
+            'filename': filename,
         }
 
 
@@ -230,3 +233,15 @@ class Significance:
 
         plt.savefig(filename, format='svg')
         plt.close()
+
+    @classmethod
+    def delete_file_after_delay(cls, filepath, delay=600):
+        """
+        Supprime un fichier après un certain délai.
+        :param filepath: Chemin vers le fichier à supprimer.
+        :param delay: Temps à attendre en secondes avant de supprimer le fichier.
+        """
+        time.sleep(delay)
+        if os.path.isfile(filepath):
+            os.remove(filepath)
+            print(f"Fichier supprimé : {filepath}")

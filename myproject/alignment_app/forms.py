@@ -1,4 +1,6 @@
 from django import forms
+from django.utils.safestring import mark_safe
+
 import djInOut
 import re
 
@@ -13,8 +15,8 @@ class AlignmentForm(forms.Form):
     identity = forms.IntegerField(required=True, initial=+2, label="coup d'une identity")
 
     significance = forms.BooleanField(required=False, initial=False, label="Activer Significance")
-    length = forms.IntegerField(required=True, initial=50, label="Longueur d'alignement")
-    random_size = forms.IntegerField(required=True, initial=100, label="Nombre de séquences aléatoires")
+    length = forms.IntegerField(required=True, initial=50, min_value=10, label="Longueur d'alignement")
+    random_size = forms.IntegerField(required=True, initial=100, min_value=1, max_value=500, label="Nombre de séquences aléatoires")
 
     def clean(self):
         cleaned_data = super().clean()
@@ -24,10 +26,10 @@ class AlignmentForm(forms.Form):
         sequence_text = cleaned_data.get("sequence_text")
 
         if not sequence_file and not sequence_text:
-            raise forms.ValidationError("Vous devez fournir un fichier ou du texte.")
+            raise forms.ValidationError(mark_safe("Vous devez fournir un fichier ou du texte."))
 
         if not align and not significance:
-            raise forms.ValidationError("vous devez selectionner une methode d'analyse")
+            raise forms.ValidationError(mark_safe("vous devez selectionner une methode d'analyse"))
 
         if sequence_file:
             sequence_content = sequence_file.read().decode('utf-8')
@@ -39,7 +41,7 @@ class AlignmentForm(forms.Form):
                     if not re.fullmatch(r'[ACGT]+', seq.getSequence()):
                         raise TypeError
             except:
-                raise forms.ValidationError("Le fichier fournis n'est pas compatible: caractere autorisé dans les sequences : ACGT")
+                raise forms.ValidationError(mark_safe("<strong>Fichier de séquences:</strong> Le fichier fournis n'est pas compatible: caractere autorisé dans les sequences : ACGT"))
 
         else:
 
@@ -49,6 +51,6 @@ class AlignmentForm(forms.Form):
                     if not re.fullmatch(r'[ACGT]+', seq.getSequence()):
                         raise TypeError
             except:
-                raise forms.ValidationError("Le fichier texte n'est pas compatible: caractere autorisé dans les sequences : ACGT")
+                raise forms.ValidationError(mark_safe("<strong>Séquences au format Fasta:</strong> Le texte n'est pas compatible: caractere autorisé dans les sequences : ACGT"))
 
         return cleaned_data
