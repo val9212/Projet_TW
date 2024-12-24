@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Formulaire d'Alignement et Significativité</title>
-    <link rel="icon" type="image/vnd.icon" href="/static/icon/favicon.png">
-    <link id="theme-style" rel="stylesheet" href="/static/style/style.css">
+    <link rel="icon" type="image/vnd.icon" href="{% static 'icon/favicon.png'%}">
+    <link id="theme-style" rel="stylesheet" href="{% static 'style/style.css'%}">
+    <script>
+    const themeCSS = {
+        light: "{% static 'style/style.css' %}",
+        dark: "{% static 'style/style_sombre.css' %}"
+    };
+    </script>
 </head>
 <body>
 
     <nav>
         <div class="center-section">
-            <a href="/"><img src="/static/images/logo.png" alt="Logo" class="nav-logo"></a>
+            <a href="/"><img src="{% static 'images/logo.png'%}" alt="Logo" class="nav-logo"></a>
             <a href="#alignment-form">Formulaire</a>
             <a href="#alignement-options">Options d'Alignement</a>
             <a href="#significance-options">Options de Significance</a>
@@ -119,8 +126,8 @@
             </p>
         <p>Il regroupe les <strong>parties 1 et 2</strong> de l'énoncé.</p>
 
-            <embed src="../static/pdfs/Alignements.pdf" type="application/pdf">
-             <a href="../static/pdfs/Alignements.pdf" class="download-button" download>Télécharger l'énoncer</a>
+            <embed src="{% static 'pdfs/Alignements.pdf'%}" type="application/pdf">
+             <a href="{% static 'pdfs/Alignements.pdf'%}" class="download-button" download>Télécharger l'énoncer</a>
         <h3>Concernant l'alignement</h3>
             <p>
                 Le programme réalise un alignement local pour identifier la région la plus similaire entre deux séquences d'ADN.
@@ -280,13 +287,13 @@
                 Ce graphe est un exemple de la fréquence des scores en générant 100 séquences aléatoires.
             </p>
         
-            <img src="../static/images/significance.svg" alt="Exemple de graphique de distribution des scores">
+            <img src="{% static 'images/significance.svg'%}" alt="Exemple de graphique de distribution des scores">
         
         <p>Une signification à <strong id="freq-max-score">26 %</strong> signifie qu'il y a une chance sur 4 que cet alignement soit dû au hasard. </p>
 
     </div>
 </body>
-<script src="../static/switch.js"></script>
-<script src="../static/form.js"></script>
+<script src="{% static 'switch.js'%}"></script>
+<script src="{% static 'form.js'%}"></script>
 
 </html>
