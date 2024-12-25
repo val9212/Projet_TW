@@ -1,0 +1,24 @@
+services:
+  caddy:
+    image: caddy:alpine
+    container_name: caddy-container
+    ports:
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./myproject/alignment_app/static:/srv/static
+  myproject:
+    container_name: alignment_app
+    ports:
+      - "8000:8000"
+
+    working_dir: /app
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    network_mode: "host"
+
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
