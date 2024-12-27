@@ -4,21 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let savedTheme = localStorage.getItem('theme');
     if (!savedTheme) {
-        savedTheme = '/static/style/style.css';
+        savedTheme = themeCSS.light;
     }
 
     themeLink.setAttribute('href', savedTheme);
 
-    if (savedTheme === '/static/style/style_sombre.css') {
-        themeToggleCheckbox.checked = true;
-    } else {
-        themeToggleCheckbox.checked = false;
-    }
+    themeToggleCheckbox.checked = (savedTheme === themeCSS.dark);
 
     themeToggleCheckbox.addEventListener('change', () => {
-        const newTheme = themeToggleCheckbox.checked
-            ? '/static/style/style_sombre.css'
-            : '/static/style/style.css';
+        const newTheme = themeToggleCheckbox.checked ? themeCSS.dark : themeCSS.light;
 
         themeLink.setAttribute('href', newTheme);
         localStorage.setItem('theme', newTheme);

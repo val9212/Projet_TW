@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Résultats Alignement et Significativité</title>
-    <link rel="icon" type="image/vnd.icon" href="/static/icon/favicon.png">
-    <link id="theme-style" rel="stylesheet" href="/static/style/style_sombre.css">
+    <link rel="icon" type="image/vnd.icon" href="{% static 'icon/favicon.png'%}">
+    <link id="theme-style" rel="stylesheet" href="{% static 'style/style.css'%}">
+    <script>
+    const themeCSS = {
+        light: "{% static 'style/style.css' %}",
+        dark: "{% static 'style/style_sombre.css' %}"
+    };
+    </script>
 </head>
 <body>
     
     <nav>
         <div class="center-section">
-            <a href="/"><img src="/static/images/logo.png" alt="Logo" class="nav-logo"></a>
+            <a href="/"><img src="{% static 'images/logo.png'%}" alt="Logo" class="nav-logo"></a>
             <a id="retour" href="{% url 'alignment_view' %}">Retour au formulaire</a>
             <a href="#alignement-result">Résultats d'Alignement</a>
             <a href="#significance-result">Résultats de Significance</a>
         </div>
         
         <div class="right-section">
-            Théme :
+            Thème :
             <label class="switch">
             <input type="checkbox" id="toggle-style">
             <span class="slider"></span>
@@ -64,5 +71,5 @@
         <img src="{{ significance_result.filename }}" alt="Graphique de distribution des scores">
     </div>
 </body>
-<script src="../static/switch.js"></script>
+<script src="{% static 'switch.js' %}"></script>
 </html>
