@@ -6,6 +6,12 @@
     <title>Résultats Alignement et Significativité</title>
     <link rel="icon" type="image/vnd.icon" href="{% static 'icon/favicon.png'%}">
     <link id="theme-style" rel="stylesheet" href="{% static 'style/style.css'%}">
+    <script>
+    const themeCSS = {
+        light: "{% static 'style/style.css' %}",
+        dark: "{% static 'style/style_sombre.css' %}"
+    };
+    </script>
 </head>
 <body>
     
@@ -18,7 +24,7 @@
         </div>
         
         <div class="right-section">
-            Théme :
+            Thème :
             <label class="switch">
             <input type="checkbox" id="toggle-style">
             <span class="slider"></span>
@@ -65,5 +71,5 @@
         <img src="{{ significance_result.filename }}" alt="Graphique de distribution des scores">
     </div>
 </body>
-<script src="{% static 'switch.js'%}"></script>
+<script src="{% static 'switch.js' %}"></script>
 </html>

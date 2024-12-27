@@ -25,7 +25,7 @@
         </div>
         
         <div class="right-section">
-            Théme :
+            Thème :
             <label class="switch">
             <input type="checkbox" id="toggle-style">
             <span class="slider"></span>
@@ -127,7 +127,7 @@
         <p>Il regroupe les <strong>parties 1 et 2</strong> de l'énoncé.</p>
 
             <embed src="{% static 'pdfs/Alignements.pdf'%}" type="application/pdf">
-             <a href="{% static 'pdfs/Alignements.pdf'%}" class="download-button" download>Télécharger l'énoncer</a>
+             <a href="{% static 'pdfs/Alignements.pdf'%}" class="download-button" download>Télécharger l'énoncé</a>
         <h3>Concernant l'alignement</h3>
             <p>
                 Le programme réalise un alignement local pour identifier la région la plus similaire entre deux séquences d'ADN.
@@ -289,11 +289,11 @@
         
             <img src="{% static 'images/significance.svg'%}" alt="Exemple de graphique de distribution des scores">
         
-        <p>Une signification à <strong id="freq-max-score">26 %</strong> signifie qu'il y a une chance sur 4 que cet alignement soit dû au hasard. </p>
+        <p>Une significativité à <strong id="freq-max-score">26 %</strong> indique qu'il y a une chance sur 4 que cet alignement soit dû au hasard. </p>
 
     </div>
 </body>
-<script src="{% static 'switch.js'%}"></script>
+<script src="{% static 'switch.js' %}"></script>
 <script src="{% static 'form.js'%}"></script>
 
 </html>
